@@ -1,11 +1,11 @@
 # 🍔 Sistema de Gerenciamento de Pedidos
 
 ## 👥 Equipe
-- Membro 1: __________________
-- Membro 2: __________________
-- Membro 3: __________________
-- Membro 4: __________________
-- Membro 5: __________________
+- Membro 1: Graciano Marôto da Cunha Neto
+- Membro 2:  José Henrique Dias
+- Membro 3:  Denis Marciel
+- Membro 4: Lara Nunes
+- Membro 5: Douglas Pereira
 
 ---
 
