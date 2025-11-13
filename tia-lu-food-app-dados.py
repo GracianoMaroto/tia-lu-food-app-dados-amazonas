@@ -1,5 +1,4 @@
 import json
-
 #-----------------------------------------------item's functions-------------------------------------------------#
 
 def create_item(code, name, description, price, stock):
@@ -78,6 +77,19 @@ def apply_order_discount(order):
 def get_orders_by_status(status):
     return [o for o in all_orders if o["status"] == status]
 
+def get_things_sorted(things):
+    n = len(things)
+    for i in range(n - 1):
+        menor = i
+        # Encontra o índice do menor código a partir de i
+        for j in range(i + 1, n):
+            if things[j]["code"] < things[menor]["code"]:
+                menor = j
+        # Troca os elementos, se necessário
+        if menor != i:
+            things[i], things[menor] = things[menor], things[i]
+    return things
+
 #----------------------------------------------- Data implementation -------------------------------------------------#
 with open('dados.json', 'r', encoding='utf-8') as arq:
     dados = json.load(arq)
@@ -96,8 +108,8 @@ def consults(all_orders, costumers):
         print("-" * 40)
         print("[1] View All Orders".center(width))
         print("[2] Filter by status".center(width))
-        print("[3] Sales Report".center(width))
-        print("[4] See all costumers".center(width))
+        print("[3] See all costumers".center(width))
+        print("[4] Sales Report".center(width))
         print("[5] Back to Main Menu".center(width))
         choice = input("Choose an option (1 / 2 / 3 / 4 / 5): ".center(width))
 
@@ -109,7 +121,7 @@ def consults(all_orders, costumers):
 
                 print("\n📋 List of orders:")
                 print("-" * 40)
-                for o in all_orders:
+                for o in get_things_sorted(all_orders.copy()):
                     items_names = [item['name'] for item in o['items_order']]
                     print(f"📦 Code: {o['code']}")
                     print(f"👤 Costumer: {o['costumer']}")
@@ -117,6 +129,7 @@ def consults(all_orders, costumers):
                     print(f"🗃️ Status: {o['status']}")
                     print(f"💰 Total: R${o['order_total_price']:.2f}")
                     print("-" * 40)
+
             case "2":
                 print("\n📋 Consult's order by status:")
                 print("-" * 40)
@@ -242,6 +255,14 @@ def consults(all_orders, costumers):
                     case _:
                         print("Invalid option. Please try again.".center(width))
             case "3":
+                print("Active costumers:")
+                for c in get_things_sorted(costumers.copy()):
+                    print("-" * 30)
+                    print(f"Code: {c['code']}")
+                    print(f"Name: {c['name']}")
+                    print(f"Cellphone: {c['cellphone']}")
+                    print("-" * 30)
+            case "4":
                 print("\n📋 Sales reports:".center(width))
                 print("-" * 40)
                 print("[1] All registers".center(width))
@@ -272,14 +293,6 @@ def consults(all_orders, costumers):
                         return
                     case _:
                         print("Invalid option. Please try again.".center(width))
-            case "4":
-                print("Active costumers:")
-                for c in costumers:
-                    print("-" * 30)
-                    print(f"Code: {c['code']}")
-                    print(f"Name: {c['name']}")
-                    print(f"Cellphone: {c['cellphone']}")
-                    print("-" * 30)
             case "5":
                 print("🔙Returning to Main Menu.".center(width))
                 return
@@ -374,7 +387,7 @@ def manage_menu_items(catalog):
                 print("📋 Menu List of Items".center(width))
                 print("=" * width)
 
-                for item in catalog:
+                for item in get_things_sorted(catalog.copy()):
                     print(f"📦 Code: {item['code']}".center(width))
                     print(f"📝 Name: {item['name']}".center(width))
                     print(f"🖊️ Description: {item['description']}".center(width))
@@ -410,7 +423,6 @@ def manage_orders(all_orders, catalog):
         choice = input("Choose an option (1 / 2 / 3 / 4 / 5):".center(width))
         
         match choice:
-# case 1 atualizado #############################################################################
             case "1":
                 name_costumer = input("What is the name of the costumer? ")
                 number_costumer = input("What is the cellphone number of the costumer? ")
