@@ -2,11 +2,11 @@
     "all_orders": [
         {
             "code": 857,
-            "costumer": [
-                436,
-                "Ana Silva",
-                "99988-1234"
-            ],
+            "costumer": {
+                "code": 436,
+                "name": "Ana Silva",
+                "cellphone": "99988-1234"
+            },
             "items_order": [
                 {
                     "code": 832,
@@ -27,11 +27,11 @@
         },
         {
             "code": 289,
-            "costumer": [
-                562,
-                "João Pereira",
-                "99977-5678"
-            ],
+            "costumer": {
+                "code": 562,
+                "name": "João Pereira",
+                "cellphone": "99977-5678"
+            },
             "items_order": [
                 {
                     "code": 832,
@@ -52,11 +52,11 @@
         },
         {
             "code": 524,
-            "costumer": [
-                448,
-                "Mariana Costa",
-                "99966-9012"
-            ],
+            "costumer": {
+                "code": 448,
+                "name": "Mariana Costa",
+                "cellphone": "99966-9012"
+            },
             "items_order": [
                 {
                     "code": 252,
@@ -77,11 +77,11 @@
         },
         {
             "code": 922,
-            "costumer": [
-                157,
-                "Carlos Lima",
-                "99955-3456"
-            ],
+            "costumer": {
+                "code": 157,
+                "name": "Carlos Lima",
+                "cellphone": "99955-3456"
+            },
             "items_order": [
                 {
                     "code": 320,
@@ -96,11 +96,11 @@
         },
         {
             "code": 353,
-            "costumer": [
-                797,
-                "Sofia Alves",
-                "99944-7890"
-            ],
+            "costumer": {
+                "code": 797,
+                "name": "Sofia Alves",
+                "cellphone": "99944-7890"
+            },
             "items_order": [
                 {
                     "code": 245,
@@ -160,7 +160,7 @@
                     "quantity": 1
                 }
             ],
-            "status": "Canceled",
+            "status": "Ready",
             "payment": "Paid",
             "order_total_price": 44.46
         }

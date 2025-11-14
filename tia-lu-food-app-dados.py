@@ -608,7 +608,7 @@ def manage_orders(all_orders, catalog):
                 print("=" * width)
 
                 for idx, order in enumerate(all_orders, start=1):
-                    print(f"{idx}. Code: {order['code']} | Costumer: {order['costumer']} | Status: {order['status']}".center(width))
+                    print(f"{idx}. Code: {order['code']} | Costumer: {order['costumer']['name']} | Status: {order['status']}".center(width))
 
                 try:
                     order_index = int(input("Select an order by code:".center(width))) - 1
@@ -670,7 +670,7 @@ def manage_orders(all_orders, catalog):
                 print("=" * width)
 
                 for idx, order in enumerate(cancellable_orders, start=1):
-                    print(f"{idx}. Code: {order['code']} | Costumer: {order['costumer']} | Status: {order['status']}".center(width))
+                    print(f"{idx}. Code: {order['code']} | Costumer: {order['costumer']['name']} | Status: {order['status']}".center(width))
 
                 try:
                     order_index = int(input("Select an order by code:".center(width))) - 1
